@@ -8,7 +8,8 @@ function App() {
   const [newDesc, setNewDesc] = useState("");
 
   // Base URL to make code cleaner
-  const API_BASE = 'http://127.0.0.1:8000/api/quizzes/' || 'https://brainbit.onrender.com/api/quizzes/';
+  // const API_BASE = 'http://127.0.0.1:8000/api/quizzes/';
+  const API_BASE = 'https://brainbit.onrender.com/api/quizzes/';
 
 // frontend/src/App.jsx
 
