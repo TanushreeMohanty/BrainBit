@@ -145,6 +145,8 @@ CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+    "https://brainbit.onrender.com",
+    "https://brain-bit-zeta.vercel.app/"
 ]
 
 # 3. Explicitly allow the common methods React uses
