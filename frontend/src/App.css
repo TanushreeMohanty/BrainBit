@@ -1,0 +1,158 @@
+/* App.css */
+:root {
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --bg-dark: #0f172a;
+  --card-bg: #1e293b;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --danger: #ef4444;
+  --danger-hover: #dc2626;
+  --glass: rgba(255, 255, 255, 0.03);
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-dark);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-main);
+  /* Ensures the body itself centers content if zoomed out */
+  display: flex;
+  justify-content: center;
+}
+
+.brainbit-app {
+  width: 100%;
+  max-width: 1200px;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers h1, form, and grid horizontally */
+}
+
+h1 {
+  font-size: 2.5rem;
+  background: linear-gradient(to right, #818cf8, #c084fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* --- Form Styling --- */
+.quiz-form {
+  width: 100%;
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  margin-bottom: 3rem; /* Removed auto margin to let parent handle centering */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center; /* Centers the "Create New Quiz" header */
+}
+
+.quiz-form h3 {
+  margin-top: 0;
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+input, textarea {
+  background: var(--bg-dark);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 12px;
+  color: white;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  width: 100%;
+  box-sizing: border-box; /* Prevents padding from breaking width */
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+button[type="submit"] {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s, background 0.2s;
+}
+
+button[type="submit"]:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+/* --- Grid & Cards --- */
+.quiz-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centers cards horizontally */
+  align-items: flex-start; /* Keeps tops aligned if descriptions vary in length */
+  gap: 1.5rem;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.quiz-card {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers text and button inside the card */
+  text-align: center;  /* Centers the h3 and p text */
+  width: 100%;
+  max-width: 320px;    /* Uniform card size */
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.quiz-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px -10px rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.quiz-card h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  color: var(--text-main);
+}
+
+.quiz-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.delete-btn {
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid var(--danger);
+  padding: 8px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  margin-top: auto; /* Pushes button to bottom if card grows */
+}
+
+.delete-btn:hover {
+  background: var(--danger);
+  color: white;
+}
+
