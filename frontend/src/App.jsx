@@ -29,7 +29,7 @@ const handleCreate = async (e) => {
   e.preventDefault();
   try {
     // Ensure you use 127.0.0.1 and not "localhost" to avoid DNS mismatches
-    await axios.post('http://127.0.0.1:8000/api/quizzes/', { 
+    await axios.post(API_BASE, { 
       title: newTitle, 
       description: newDesc 
     });
