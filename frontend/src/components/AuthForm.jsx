@@ -9,7 +9,7 @@ const AuthForm = ({
   return (
     <div className="login-container">
       <div className="login-box">
-        <h2><img id='logo' src={img} alt="BrainBit Logo" />BrainBit {isSignupMode ? " Signup" : " Login"} </h2>
+        <h2><img id='logo' src={img} alt="BrainBit Logo" /> {isSignupMode ? " Signup" : " Login"} </h2>
         <form onSubmit={onSubmit}>
           <input 
             type="text" placeholder="Username" 
