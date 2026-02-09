@@ -4,6 +4,7 @@ import { jwtDecode } from 'jwt-decode';
 import Navbar from './components/Navbar';
 import AuthForm from './components/AuthForm';
 import MainMenu from './components/MainMenu';
+import AdminDashboard from './components/AdminDashboard'; // Management Core
 import './App.css';
 
 function App() {
@@ -13,17 +14,26 @@ function App() {
   const [isSignupMode, setIsSignupMode] = useState(false);
   
   const [formStates, setFormStates] = useState({
-    username: "", password: "", email: "", firstName: "", lastName: "", role: "player"
+    username: "", 
+    password: "", 
+    email: "", 
+    firstName: "", 
+    lastName: "", 
+    role: "player"
   });
 
   const API_BASE = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
-    ? "http://127.0.0.1:8000/api/" : "https://brainbit.onrender.com/api/";
+    ? "http://127.0.0.1:8000/api/" 
+    : "https://brainbit.onrender.com/api/";
 
   useEffect(() => {
     if (token) {
       try {
         const decoded = jwtDecode(token);
-        setUser({ username: decoded.username, isAdmin: decoded.is_admin || decoded.is_staff });
+        setUser({ 
+          username: decoded.username, 
+          isAdmin: decoded.is_admin || decoded.is_staff 
+        });
       } catch { logout(); }
     }
   }, [token]);
@@ -62,19 +72,29 @@ function App() {
 
   return (
     <div className="app-container">
+      {/* 🧭 Integrated Branding Navbar */}
       <Navbar user={user} onLogout={logout} onNavigate={setView} />
+
       <main className="content">
+        {/* --- 1. Selection Hub --- */}
         {view === "menu" && <MainMenu user={user} onNavigate={setView} />}
+
+        {/* --- 2. Admin Management Side (Management Core) --- */}
         {view === "create" && (
           <div className="dashboard-wrapper">
-             <button className="back-btn" onClick={() => setView("menu")}>⬅ Back</button>
-             <h2>Admin Console</h2>
+             <button className="back-btn" onClick={() => setView("menu")}>⬅ Back to Menu</button>
+             {/* Passes token for CRUD authorization */}
+             <AdminDashboard token={token} API_BASE={API_BASE} />
           </div>
         )}
+
+        {/* --- 3. Player Attempt Side --- */}
         {view === "play" && (
           <div className="dashboard-wrapper">
-             <button className="back-btn" onClick={() => setView("menu")}>⬅ Back</button>
+             <button className="back-btn" onClick={() => setView("menu")}>⬅ Back to Menu</button>
              <h2>Available Quizzes</h2>
+             <p>Choose a quiz and prove your skills!</p>
+             {/* PlayerDashboard will be added here next */}
           </div>
         )}
       </main>
