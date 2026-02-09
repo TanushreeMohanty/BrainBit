@@ -51,6 +51,7 @@ input, select {
   border-radius: 8px;
   cursor: pointer;
   margin-bottom: 2rem;
+  margin: 20px;
 }
 
 .back-btn:hover {

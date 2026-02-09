@@ -111,8 +111,7 @@ const AdminDashboard = ({ token, API_BASE }) => {
         <div className="admin-view-container animate-fade-in">
           <section className="dashboard-glass-card">
             <div className="card-header">
-              <span className="header-icon">🚀</span>
-              <h3>Create New Quiz</h3>
+              <h3><span className="header-icon">🚀</span>Create New Quiz</h3>
             </div>
             <form onSubmit={handleCreateQuiz} className="admin-form">
               <input className="glass-input" type="text" placeholder="Quiz Title" value={newQuiz.title} onChange={e => setNewQuiz({...newQuiz, title: e.target.value})} required />
