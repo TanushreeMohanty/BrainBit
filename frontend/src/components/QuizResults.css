@@ -1,0 +1,146 @@
+/* --- Results View Layout --- */
+.results-layout-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 2rem;
+  min-height: 80vh;
+}
+
+.results-glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 40px;
+  padding: 4rem 3rem;
+  text-align: center;
+  max-width: 550px;
+  width: 100%;
+  box-shadow: 0 50px 100px rgba(0, 0, 0, 0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+.confetti-burst {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.completion-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.completion-quiz-name {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* --- Circular Score UI --- */
+.score-visual-section {
+  margin: 3.5rem 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.circular-score-container {
+  width: 180px;
+  height: 180px;
+  border: 10px solid;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  z-index: 2;
+}
+
+.score-data {
+  display: flex;
+  flex-direction: column;
+}
+
+.final-score-num {
+  font-size: 4rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.final-total-num {
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.score-glow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.15;
+  z-index: -1;
+}
+
+.percentage-pill {
+  margin-top: -20px;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: white;
+  z-index: 3;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* --- Feedback Section --- */
+.dynamic-feedback-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  line-height: 1.4;
+}
+
+/* --- Footer Actions --- */
+.results-button-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.btn-retry-action {
+  background: rgb(21, 21, 82);
+  color: white;
+  padding: 1.25rem;
+  border-radius: 18px;
+  font-weight: 800;
+  font-size: 1.2rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-retry-action:hover {
+  transform: translateY(-3px);
+}
+
+.btn-menu-action {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  padding: 1.25rem;
+  border-radius: 18px;
+  font-weight: 600;
+  border: 1px solid var(--glass-border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-menu-action:hover {
+  background: rgba(255, 255, 255, 0.1);
+}

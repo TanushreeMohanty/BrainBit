@@ -1,0 +1,169 @@
+/* --- Session Layout --- */
+.quiz-session-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 85vh;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.session-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.exit-circle-btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.exit-circle-btn:hover {
+  background: var(--danger);
+  border-color: var(--danger);
+}
+
+/* --- Progress Tracking --- */
+.progress-container-main {
+  flex: 1;
+}
+
+.progress-bar-track {
+  height: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 8px;
+  border: 1px solid var(--glass-border);
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6366f1, #a855f7);
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.progress-label span {
+  color: var(--text-main);
+  font-weight: 800;
+}
+
+/* --- Focus Card --- */
+.focus-card-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.question-focus-card {
+  background: var(--card-bg);
+  padding: 4rem 3rem;
+  border-radius: 32px;
+  border: 1px solid var(--glass-border);
+  width: 100%;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-top-accent {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #6366f1, #a855f7);
+}
+
+.focus-question-text {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 3rem;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.focus-options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.focus-option-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.choice-letter {
+  width: 35px;
+  height: 35px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.focus-option-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.focus-option-item.active {
+  border-color: var(--primary);
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.focus-option-item.active .choice-letter {
+  background: var(--primary);
+  color: white;
+}
+
+.action-next-btn {
+  width: 100%;
+  padding: 1.25rem;
+  background: var(--primary);
+  color: white;
+  border-radius: 16px;
+  font-weight: 800;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.action-next-btn:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+  filter: grayscale(1);
+}
