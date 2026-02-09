@@ -1,11 +1,24 @@
 from django.urls import path
-# Update the import to match the updated views we'll use
-from .views import QuizListCreateView, QuizDetailView
+from .views import (
+    QuizListCreateView, 
+    QuizDetailView, 
+    RegisterView, 
+    MyTokenObtainPairView
+)
+from rest_framework_simplejwt.views import TokenRefreshView
 
 urlpatterns = [
-    # Path for Listing all quizzes and Creating a new one
+    # --- Quiz Endpoints ---
     path('quizzes/', QuizListCreateView.as_view(), name='quiz-list'),
-    
-    # Path for Getting, Updating, or Deleting a specific quiz
     path('quizzes/<int:pk>/', QuizDetailView.as_view(), name='quiz-detail'),
+    
+    # --- Authentication Endpoints ---
+    # Endpoint for creating a new user (Signup)
+    path('register/', RegisterView.as_view(), name='register'),
+    
+    # Custom endpoint for Login (returns access token with is_admin flag)
+    path('token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    
+    # Standard endpoint to refresh the access token
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
