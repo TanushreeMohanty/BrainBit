@@ -9,7 +9,10 @@ function App() {
 
   // Base URL to make code cleaner
   // const API_BASE = 'http://127.0.0.1:8000/api/quizzes/';
-  const API_BASE = 'https://brainbit.onrender.com/api/quizzes/';
+  // const API_BASE = 'https://brainbit.onrender.com/api/quizzes/';
+  const API_BASE = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+  ? "http://127.0.0.1:8000/api/quizzes/"
+  : "https://brainbit.onrender.com/api/quizzes/";
 
 // frontend/src/App.jsx
 
