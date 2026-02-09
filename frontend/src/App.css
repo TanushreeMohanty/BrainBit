@@ -190,3 +190,55 @@ input, select {
   border-color: var(--text-main);
   color: var(--text-main);
 }
+
+/* --- Global Logo Base Styles --- */
+#logo {
+  width: auto;
+  object-fit: contain;
+  /* Premium theme glow effect */
+  filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.5));
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+  cursor: pointer;
+}
+
+#logo:hover {
+  transform: rotate(5deg) scale(1.1);
+  filter: drop-shadow(0 0 15px rgba(192, 132, 252, 0.8));
+}
+
+/* --- Context 1: Logo in Navbar --- */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 800;
+  font-size: 1.5rem;
+  /* Matches your brand colors */
+  background: linear-gradient(to right, #ffffff, #94a3b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logo #logo {
+  height: 38px; /* Slightly smaller for the slim navbar */
+}
+
+/* --- Context 2: Logo in Login/Signup Header --- */
+.login-box h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.login-box h2 #logo {
+  height: 45px; /* Larger impact for the auth screen */
+}
+
+/* Ensure emojis or spans align with the image logo */
+.login-box h2 span {
+  display: inline-block;
+  vertical-align: middle;
+}
