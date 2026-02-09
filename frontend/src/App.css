@@ -69,11 +69,10 @@ select {
 .toggle-btn {
   background: transparent;
   border: none;
-  color: var(--primary);
+  color: white;
   margin-top: 1.5rem;
   cursor: pointer;
   font-size: 0.9rem;
-  text-decoration: underline;
 }
 
 /* --- Navigation & Layout --- */
