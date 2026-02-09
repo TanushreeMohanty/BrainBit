@@ -4,7 +4,8 @@ import { jwtDecode } from 'jwt-decode';
 import Navbar from './components/Navbar';
 import AuthForm from './components/AuthForm';
 import MainMenu from './components/MainMenu';
-import AdminDashboard from './components/AdminDashboard'; // Management Core
+import AdminDashboard from './components/AdminDashboard';
+import LandingPage from './components/LandingPage'; // 1. Import Landing Page
 import './App.css';
 
 function App() {
@@ -12,14 +13,10 @@ function App() {
   const [token, setToken] = useState(localStorage.getItem('token'));
   const [view, setView] = useState("menu");
   const [isSignupMode, setIsSignupMode] = useState(false);
-  
+  const [showLanding, setShowLanding] = useState(true); // 2. Landing State
+
   const [formStates, setFormStates] = useState({
-    username: "", 
-    password: "", 
-    email: "", 
-    firstName: "", 
-    lastName: "", 
-    role: "player"
+    username: "", password: "", email: "", firstName: "", lastName: "", role: "player"
   });
 
   const API_BASE = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
@@ -34,9 +31,16 @@ function App() {
           username: decoded.username, 
           isAdmin: decoded.is_admin || decoded.is_staff 
         });
+        setShowLanding(false); // Skip landing if already logged in
       } catch { logout(); }
     }
   }, [token]);
+
+  // 3. Helper to enter Auth mode from Landing
+  const enterAuth = (signupMode) => {
+    setIsSignupMode(signupMode);
+    setShowLanding(false);
+  };
 
   const handleAuth = async (e) => {
     e.preventDefault();
@@ -58,43 +62,42 @@ function App() {
     setToken(null);
     setUser(null);
     setView("menu");
+    setShowLanding(true); // Return to landing on logout
   };
 
-  if (!token) return (
-    <AuthForm 
-      isSignupMode={isSignupMode} 
-      onToggleMode={() => setIsSignupMode(!isSignupMode)}
-      onSubmit={handleAuth}
-      formStates={formStates}
-      setFormStates={setFormStates}
-    />
-  );
+  // --- 4. Unauthenticated View Logic ---
+  if (!token) {
+    return showLanding ? (
+      <LandingPage onEnter={enterAuth} />
+    ) : (
+      <AuthForm 
+        isSignupMode={isSignupMode} 
+        onToggleMode={() => setIsSignupMode(!isSignupMode)}
+        onSubmit={handleAuth}
+        formStates={formStates}
+        setFormStates={setFormStates}
+        onBack={() => setShowLanding(true)} // Back to landing button
+      />
+    );
+  }
 
+  // --- 5. Authenticated App ---
   return (
     <div className="app-container">
-      {/* 🧭 Integrated Branding Navbar */}
       <Navbar user={user} onLogout={logout} onNavigate={setView} />
-
       <main className="content">
-        {/* --- 1. Selection Hub --- */}
         {view === "menu" && <MainMenu user={user} onNavigate={setView} />}
-
-        {/* --- 2. Admin Management Side (Management Core) --- */}
         {view === "create" && (
           <div className="dashboard-wrapper">
              <button className="back-btn" onClick={() => setView("menu")}>⬅ Back to Menu</button>
-             {/* Passes token for CRUD authorization */}
              <AdminDashboard token={token} API_BASE={API_BASE} />
           </div>
         )}
-
-        {/* --- 3. Player Attempt Side --- */}
         {view === "play" && (
           <div className="dashboard-wrapper">
              <button className="back-btn" onClick={() => setView("menu")}>⬅ Back to Menu</button>
              <h2>Available Quizzes</h2>
              <p>Choose a quiz and prove your skills!</p>
-             {/* PlayerDashboard will be added here next */}
           </div>
         )}
       </main>
