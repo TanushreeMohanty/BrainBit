@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './MainMenu.css';
 const MainMenu = ({ user, onNavigate }) => (
   <div className="menu-selection animate-fade-in">
     <div className="menu-welcome">
