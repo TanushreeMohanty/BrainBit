@@ -1,5 +1,6 @@
 import React from 'react';
 import img from '../assets/logo.png';
+import './LandingPage.css';
 const LandingPage = ({ onEnter }) => {
   return (
     <div className="landing-container">

@@ -1,0 +1,62 @@
+/* LandingPage.css */
+.landing-container {
+min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Premium radial background from your design */
+  background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent),
+              radial-gradient(circle at bottom left, rgba(168, 85, 247, 0.15), transparent);
+  text-align: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/*Responsive Hero Content */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1rem, 3vh, 2rem);
+  max-width: 90%;
+}
+
+.hero-logo {
+  height: clamp(60px, 15vh, 120px);
+  filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.6));
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Responsive Typography */
+.landing-title {
+  font-size: clamp(1.5rem, 6vw, 3.5rem);
+  margin: 0;
+  line-height: 1.1;
+  color: var(--text-white);
+}
+
+.landing-subtitle {
+  font-size: clamp(0.85rem, 2vw, 1.1rem);
+  max-width: 500px;
+  color: var(--text-gray); 
+  margin: 0;
+}
+
+/* Responsive Buttons */
+.landing-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.cta-btn {
+  padding: 0.8rem 2rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  transition: all 0.3s ease;
+  background-color: var(--bg-dark);
+}

@@ -1,3 +1,59 @@
+/* Good CSS */
+:root {
+  /* Core Brand Colors */
+  --primary: #6366f1;       /* BrainBit Purple */
+  --accent: #a855f7;        /* BrainBit Pink */
+  --bg-dark: #0f172a;       /* Deep Navy Foundation */
+  
+  /* Glassmorphism Components */
+  --card-bg: rgba(30, 41, 59, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shine: rgba(255, 255, 255, 0.05);
+
+  /* Functional Status Colors */
+  --success: #10b981;       /* Leaderboard Green */
+  --text-white: #ffffff;
+  --text-gray: #94a3b8;
+  
+  /* Ranking Medals */
+  --gold: #f59e0b;
+  --silver: #e2e8f0;
+  --bronze: #cd7f32;
+}
+/* Overall CSS */
+/* White Purple Hero Text */
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.hero-title span {
+  background: linear-gradient(to right, #6366f1, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  color: #94a3b8;
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto 3rem auto;
+}
+
+/* Global Reset to kill the scrollbar */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  /* overflow: hidden; This is the "kill switch" for the outer scrollbar */
+  background-color: #0f172a; /* Match your app's dark theme */
+}
+
+
 /* Checked CSS */
 
 /* Overall CSS */
@@ -95,18 +151,6 @@ button:focus-visible {
 }
 
 /* index.html */
-body {
-  margin: 0;
-  background-color: #0f172a;
-  
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  color: #f8fafc;
-  justify-content: center;
-  min-height: 100vh;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-}
 
 #root { width: 100%; }
 
@@ -368,83 +412,6 @@ select {
 .login-box h2 span {
   display: inline-block;
   vertical-align: middle;
-}
-
-
-/* Landing page */
-
-.landing-container {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent),radial-gradient(circle at bottom left, rgba(168, 85, 247, 0.15), transparent);
-  padding: 2rem;
-  text-align: center;
-}
-
-.hero-logo {
-  height: 120px;
-  margin-bottom: 2rem;
-  filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.6));
-  animation: float 6s ease-in-out infinite;
-}
-
-.hero-title {
-  font-size: 3.5rem;
-  font-weight: 900;
-  margin-bottom: 1rem;
-}
-
-.hero-title span {
-  background: linear-gradient(to right, #6366f1, #a855f7);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero-subtitle {
-  color: #94a3b8;
-  font-size: 1.2rem;
-  max-width: 600px;
-  margin: 0 auto 3rem auto;
-}
-
-.landing-actions {
-  display: flex;
-  gap: 1.5rem;
-  justify-content: center;
-}
-
-.cta-btn {
-  padding: 1rem 2.5rem;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.cta-btn.primary {
-  background: #6366f1;
-  color: white;
-  border: none;
-  box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
-}
-
-.cta-btn.secondary {
-  background: rgba(255, 255, 255, 0.05);
-  color: white;
-  border: 1px solid black;
-}
-
-.cta-btn:hover {
-  transform: translateY(-3px);
-  filter: brightness(1.2);
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
 }
 
 /* Uncheck CSS--------------------------------------------------------- */
