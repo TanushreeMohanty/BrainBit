@@ -59,7 +59,7 @@ useEffect(() => {
   return (
     <div className="leaderboard-layout animate-fade-in">
       <div className="leaderboard-header">
-        <h2 className="section-title">🏆 BrainBit <span>Champions</span></h2>
+        <h2 className="hero-title"> BrainBit <span>Champions</span>🏆</h2>
         <p className="section-subtitle">The top performers across all challenges.</p>
       </div>
 

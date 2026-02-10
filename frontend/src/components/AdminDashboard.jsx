@@ -111,7 +111,7 @@ const AdminDashboard = ({ token, API_BASE }) => {
         <div className="admin-view-container animate-fade-in">
           <section className="dashboard-glass-card">
             <div className="card-header">
-              <h3><span className="header-icon">🚀</span>Create New Quiz</h3>
+              <h3><span className="header-icon"></span>Create New Quiz</h3>
             </div>
             <form onSubmit={handleCreateQuiz} className="admin-form">
               <input className="glass-input" type="text" placeholder="Quiz Title" value={newQuiz.title} onChange={e => setNewQuiz({...newQuiz, title: e.target.value})} required />
@@ -121,7 +121,7 @@ const AdminDashboard = ({ token, API_BASE }) => {
           </section>
 
           <section className="audit-section">
-            <h3 className="section-label">Audit & Manage Quizzes</h3>
+            <h3 className="section-label">Manage Quizzes</h3>
             <div className="quiz-grid">
               {quizzes.map(quiz => (
                 <div key={quiz.id} className="quiz-glass-card">
