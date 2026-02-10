@@ -1,6 +1,6 @@
 import React from 'react';
 import img from '../assets/logo.png';
-
+import './Navbar.css';
 const Navbar = ({ user, onLogout, onNavigate }) => {
   return (
     <nav className="navbar">

@@ -1,0 +1,99 @@
+/* --- Navbar Container --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 5%;
+  height: 70px;
+  background:var(--bg-light); 
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* --- Brand Section --- */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  flex-shrink: 0; /* Prevents logo from squishing on small screens */
+}
+
+.nav-logo {
+  height: clamp(30px, 5vh, 40px); /* Fluid sizing for smaller headers */
+  width: auto;
+  filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5));
+}
+
+.brand-name {
+  font-size: clamp(1.1rem, 4vw, 1.5rem);
+  font-weight: 800;
+  color: #f8fafc;
+  letter-spacing: -0.03em;
+}
+
+/* --- Actions Section --- */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 2vw, 20px); /* Tighter gaps on mobile */
+}
+
+.status-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 6px 12px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* --- 📱 Mobile Responsiveness (The "No-Scroll" Fix) --- */
+
+@media (max-width: 600px) {
+  .navbar {
+    padding: 0.75rem 3%; /* More room for content on edges */
+  }
+
+  /* Hide the brand name on very small screens to keep the logo and logout visible */
+  .brand-name {
+    display: none; 
+  }
+
+  /* Compact the status pill to just the icon/role dot */
+  .status-pill {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+  
+  /* Make the logout button more compact */
+  .logout-btn {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+/* --- Status Colors --- */
+.admin-pill { color: #3b82f6; border-color: rgba(59, 130, 246, 0.4); }
+.player-pill { color: #06b6d4; border-color: rgba(6, 182, 212, 0.4); }
+
+.logout-btn {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
