@@ -1,5 +1,6 @@
 import React from 'react';
 import img from '../assets/logo.png';
+import './AuthForm.css';
 const AuthForm = ({ 
   isSignupMode, onToggleMode, onSubmit, 
   formStates, setFormStates 

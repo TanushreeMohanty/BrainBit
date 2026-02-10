@@ -6,8 +6,6 @@ min-height: 100vh;
   align-items: center;
   justify-content: center;
   /* Premium radial background from your design */
-  background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent),
-              radial-gradient(circle at bottom left, rgba(168, 85, 247, 0.15), transparent);
   text-align: center;
   padding: 1rem;
   box-sizing: border-box;
@@ -58,5 +56,5 @@ min-height: 100vh;
   font-weight: 700;
   font-size: clamp(0.9rem, 1.5vw, 1.1rem);
   transition: all 0.3s ease;
-  background-color: var(--bg-dark);
+  background-color: var(--bg-light);
 }

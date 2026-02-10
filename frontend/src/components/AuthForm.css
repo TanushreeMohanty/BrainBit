@@ -1,0 +1,48 @@
+/* AuthForm.jsx */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.login-box {
+  background: #1e293b;
+  padding: 2.5rem;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.role-selection {
+  margin: 1rem 0;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+select {
+  background: #0f172a;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+.toggle-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.toggle-btn:hover {
+  text-decoration: underline;
+}
