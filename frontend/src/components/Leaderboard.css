@@ -1,0 +1,89 @@
+/* --- Leaderboard Premium Styling --- */
+.leaderboard-layout {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.leaderboard-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.leaderboard-glass-table {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 80px 1.5fr 1.5fr 1fr;
+  padding: 1.2rem 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid var(--glass-border);
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 80px 1.5fr 1.5fr 1fr;
+  padding: 1.2rem 2rem;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  transition: background 0.2s ease;
+}
+
+.table-row:last-child { border-bottom: none; }
+
+.table-row:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Rank Highlighting */
+.rank-1 { background: rgba(245, 158, 11, 0.08); }
+.rank-2 { background: rgba(226, 232, 240, 0.05); }
+.rank-3 { background: rgba(205, 127, 50, 0.05); }
+
+.rank-badge {
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.player-name {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.quiz-name-tag {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 12px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.score-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.score-val {
+  font-weight: 800;
+  color: #10b981;
+}
+
+.perc-val {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.text-right { text-align: right; }

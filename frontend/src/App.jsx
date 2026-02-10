@@ -9,6 +9,7 @@ import LandingPage from "./components/LandingPage"; // 1. Import Landing Page
 import PlayerDashboard from "./components/PlayerDashboard";
 import QuizSession from "./components/QuizSession";
 import QuizResults from "./components/QuizResults";
+import Leaderboard from "./components/Leaderboard";
 import "./App.css";
 
 function App() {
@@ -104,12 +105,26 @@ function App() {
     setView("active-session");
   };
 
-  // Function to transition from Session to Results
-  const handleQuizComplete = (score, total) => {
-    setQuizResult({ score, total });
-    setView("results");
-  };
+const handleQuizComplete = async (score, total) => {
+  setQuizResult({ score, total });
+  setView("results");
 
+  try {
+    await axios.post(
+      `${API_BASE}attempts/`,
+      {
+        quiz: activeQuiz.id,
+        score: score,
+        total_questions: total,
+      },
+      {
+        headers: { Authorization: `Bearer ${token}` }, // Add this to save the score!
+      }
+    );
+  } catch (err) {
+    console.error("Failed to save score:", err.response?.data);
+  }
+};
   const resetToMenu = () => {
     setActiveQuiz(null);
     setQuizResult(null);
@@ -157,7 +172,15 @@ function App() {
             />
           </div>
         )}
-
+{/* 📊 Global Rankings View */}
+{view === "leaderboard" && (
+  <div className="dashboard-wrapper">
+    <button className="back-btn" onClick={() => setView("menu")}>
+      ⬅ Back to Menu
+    </button>
+    <Leaderboard token={token} API_BASE={API_BASE} /> 
+  </div>
+)}
         {/* 2. Active Focus Mode Session */}
         {view === "active-session" && activeQuiz && (
           <QuizSession
@@ -177,6 +200,7 @@ function App() {
             quizTitle={activeQuiz.title}
             onRetry={handleRetry} // Use the new fixed function
             onBackToMenu={resetToMenu}
+            onViewLeaderboard={() => setView("leaderboard")} // Passes the navigation logic
           />
         )}
       </main>

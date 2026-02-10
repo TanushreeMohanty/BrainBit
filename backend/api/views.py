@@ -1,21 +1,21 @@
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, status
+from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView
 from django.contrib.auth.models import User
-# Add Question and Choice to your imports
-from .models import Quiz, Question, Choice 
+from .models import Quiz, Question, Choice, Attempt # Ensure Attempt model exists
 from .serializers import (
     QuizSerializer, 
-    QuestionSerializer, # Ensure this exists in serializers.py
-    ChoiceSerializer,   # Ensure this exists in serializers.py
+    QuestionSerializer, 
+    ChoiceSerializer, 
     RegisterSerializer, 
-    MyTokenObtainPairSerializer
+    MyTokenObtainPairSerializer,
+    AttemptSerializer # Ensure this is in serializers.py
 )
 
 # --- AUTH VIEWS ---
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
-# In backend/views.py
 class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
     permission_classes = [permissions.AllowAny]
@@ -23,7 +23,6 @@ class RegisterView(generics.CreateAPIView):
 
     def perform_create(self, serializer):
         user = serializer.save()
-        # Double check if the role was sent as 'admin'
         role = self.request.data.get('role', 'player')
         if role.lower() == 'admin':
             user.is_staff = True
@@ -35,7 +34,6 @@ class QuizListCreateView(generics.ListCreateAPIView):
     serializer_class = QuizSerializer
     
     def get_permissions(self):
-        # IsAdminUser checks the is_staff flag we set in the serializer
         if self.request.method == 'POST':
             return [permissions.IsAdminUser()]
         return [permissions.AllowAny()]
@@ -49,24 +47,42 @@ class QuizDetailView(generics.RetrieveUpdateDestroyAPIView):
             return [permissions.IsAdminUser()]
         return [permissions.AllowAny()]
 
-# --- QUESTION & CHOICE VIEWS (Add these now) ---
+# --- QUESTION & CHOICE VIEWS ---
 
 class QuestionListCreateView(generics.ListCreateAPIView):
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
 
     def get_permissions(self):
-        # Only Admins can POST new questions
         if self.request.method == 'POST':
             return [permissions.IsAdminUser()]
         return [permissions.AllowAny()]
+
+class QuestionDetailView(generics.RetrieveUpdateDestroyAPIView):
+    """Allows deleting or updating specific questions"""
+    queryset = Question.objects.all()
+    serializer_class = QuestionSerializer
+    permission_classes = [permissions.IsAdminUser]
 
 class ChoiceListCreateView(generics.ListCreateAPIView):
     queryset = Choice.objects.all()
     serializer_class = ChoiceSerializer
 
     def get_permissions(self):
-        # Only Admins can POST choices for questions
         if self.request.method == 'POST':
             return [permissions.IsAdminUser()]
         return [permissions.AllowAny()]
+
+# --- LOGIC & SCORING: ATTEMPT VIEWS ---
+
+# In api/views.py
+# In api/views.py
+class AttemptListCreateView(generics.ListCreateAPIView):
+    queryset = Attempt.objects.all()
+    serializer_class = AttemptSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def perform_create(self, serializer):
+        # This is CRITICAL. It tells Django: "The 'user' field 
+        # for this Attempt is whoever is currently logged in."
+        serializer.save(user=self.request.user)

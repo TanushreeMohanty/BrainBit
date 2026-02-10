@@ -144,3 +144,57 @@
 .btn-menu-action:hover {
   background: rgba(255, 255, 255, 0.1);
 }
+
+/* --- Analytics Breakdown Styles --- */
+.analytics-breakdown-container {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.analytic-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0.5rem 1rem;
+}
+
+.stat-circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.correct .stat-circle { 
+  background: #10b981; 
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+.incorrect .stat-circle { 
+  background: #ef4444; 
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stat-count {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #fff;
+}
